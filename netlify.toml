@@ -1,0 +1,24 @@
+[build]
+  command = "npm run build"  # Si necesitas construir tu aplicación
+  publish = "public"  # Especifica la carpeta que Netlify debe servir
+
+[[redirects]]  # Si deseas agregar redirecciones personalizadas
+  from = "/old-url"
+  to = "/new-url"
+  status = 301
+
+[[headers]]  # Si deseas agregar encabezados personalizados
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "no-referrer"
+
+[[redirects]]  # Redirigir todo a nuestro servidor Express
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]  # Redirigir nuestras solicitudes de API a nuestro servidor Express
+  from = "/api/*"
+  to = "http://localhost:3000/:splat"
+  status = 200

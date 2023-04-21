@@ -25,6 +25,9 @@ app.get('/datos/fechas', (req, res) => {
     res.json({ fechaMinima, fechaMaxima });
   });
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log('Servidor iniciado en el puerto', process.env.PORT || 3000);
-});
+  const PORT = process.env.PORT || 3000;
+
+  app.listen(PORT, () => {
+    console.log(`Servidor iniciado en el puerto ${PORT}`);
+  });
+  
